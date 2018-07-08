@@ -20,7 +20,7 @@ node() {
         def currentJobDirectory = env.JOB_NAME.split('/')[0..-2].join('/')
         println("Current job directory => ${currentJobDirectory}")
         sh "echo ${currentJobDirectory}/${env.branch} | tee -a folders.yaml"
-        sh "find . | grep \"${env.zone}\" | sed \"s|^.|- ${currentJobDirectory}/${env.branch}|g\" |sed \"s|.yaml||g\" | sort | uniq  | tee -a folders.yaml"
+        sh "find . | grep \"${env.zone}\" | sed \"s|^.|- ${currentJobDirectory}/${env.branch}|g\" |sed \"s|.yaml||g\" | sort | uniq  | tee folders.yaml"
         sh "/usr/local/bin/jenkins-jobs --conf jenkins_conf.ini update create_folders.yaml"
     }
 
