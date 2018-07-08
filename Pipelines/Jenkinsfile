@@ -11,6 +11,8 @@ node() {
 
     stage("Checkout source") {
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/KevinCIT/Configuration.git']]])
+
+        sh "env"
     }
 
     stage("Create all folders") {
