@@ -16,6 +16,7 @@ node() {
     }
 
     stage("Create all folders") {
+        println(env.JOB_NAME)
         def currentJobDirectory = env.JOB_NAME.split('/')[0..-2]
         println("Current job directory => ${currentJobDirectory}")
         sh "find . | grep /streams/ | sed \"s|/streams||g\" | sed \"s|^.|- ${currentJobDirectory}/${env.branch}|g\" |sed \"s|.yaml||g\" | sort | uniq  | tee folders.yaml"
