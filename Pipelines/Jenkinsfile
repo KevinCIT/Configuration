@@ -1,10 +1,12 @@
 node() {
-    parameters {
-        string(defaultValue: "HGZ", name: 'zone')
-        string(defaultValue: "", name: 'release')
-        string(defaultValue: "", name: 'sg')
-        string(defaultValue: "", name: 'testline')
-    }
+    properties([
+        parameters([
+            string(defaultValue: "HGZ", name: 'zone'),
+            string(defaultValue: "", name: 'release'),
+            string(defaultValue: "", name: 'sg'),
+            string(defaultValue: "", name: 'testline')
+        ])
+    ])
 
     stage("Create jobs and folders") {
         sh "ls && pwd"
