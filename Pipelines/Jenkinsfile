@@ -36,7 +36,6 @@ node() {
             grep \"${zone}\" | \
             grep \"${release}\" | \
             grep \"${sg}\" | \
-            grep \"${testline}\" 
-        "
+            grep \"${testline}\""
     }
 }
