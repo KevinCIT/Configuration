@@ -17,10 +17,13 @@ node() {
         sh "ls && pwd"
         sh "find ."
 
+        
         echo "branch: ${env.branch}"
         echo "zone: ${env.zone}"
         echo "release: ${env.release}"
         echo "sg: ${env.sg}"
         echo "testline: ${env.testline}"
+
+        sh " find . | grep ${env.branch} | grep ${env.zone} | grep ${env.release} | grep ${env.sg} | grep ${env.testline}"
     }
 }
