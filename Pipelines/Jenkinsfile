@@ -16,11 +16,11 @@ node() {
     stage("Create jobs and folders") {
         sh "ls && pwd"
 
-        def branch = env.branch ? env.branch : ''
-        def zone = env.zone ? env.zone : ''
-        def release = env.release ? env.release : ''
-        def sg = env.sg ? env.sg : ''
-        def testline = env.testline ? env.testline : ''
+        def branch = env.branch ? env.branch : '.*'
+        def zone = env.zone ? env.zone : '.*'
+        def release = env.release ? env.release : '.*'
+        def sg = env.sg ? env.sg : '.*'
+        def testline = env.testline ? env.testline : '.*'
         
         echo "branch: ${branch}"
         echo "zone: ${zone}"
