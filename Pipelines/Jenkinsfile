@@ -15,13 +15,19 @@ node() {
 
     stage("Create jobs and folders") {
         sh "ls && pwd"
-        
-        echo "branch: ${env.branch}"
-        echo "zone: ${env.zone}"
-        echo "release: ${env.release}"
-        echo "sg: ${env.sg}"
-        echo "testline: ${env.testline}"
 
-        sh " find . | grep ${env.branch} | grep ${env.zone} | grep ${env.release} | grep ${env.sg} | grep ${env.testline}"
+        def branch = env.branch ? env.branch : ''
+        def zone = env.zone ? env.zone : ''
+        def release = env.release ? env.release : ''
+        def sg = env.sg ? env.sg : ''
+        def testline = env.testline ? env.testline : ''
+        
+        echo "branch: ${branch}"
+        echo "zone: ${zone}"
+        echo "release: ${release}"
+        echo "sg: ${sg}"
+        echo "testline: ${testline}"
+
+        sh " find . | grep ${branch} | grep ${zone} | grep ${release} | grep ${sg} | grep ${testline}"
     }
 }
