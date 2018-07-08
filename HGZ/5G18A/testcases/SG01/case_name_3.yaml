@@ -1,0 +1,5 @@
+- include_streams: all
+  exclude_streams: 
+    - 4.32111
+  exclude_testlines:
+    - TL3
