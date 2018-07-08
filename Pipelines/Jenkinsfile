@@ -19,8 +19,8 @@ node() {
         println(env.JOB_NAME)
         def currentJobDirectory = env.JOB_NAME.split('/')[0..-2].join('/')
         println("Current job directory => ${currentJobDirectory}")
-        sh "echo ${currentJobDirectory}/${env.branch} | tee -a folders.yaml"
-        sh "find . | grep \"${env.zone}\" | sed \"s|^.|- ${currentJobDirectory}/${env.branch}|g\" |sed \"s|.yaml||g\" | sort | uniq  | tee folders.yaml"
+        
+        sh "find . | grep \"${env.zone}\" | grep -Ev \"testcases|.git\" | sed \"s|^.|- ${currentJobDirectory}/${env.branch}|g\" |sed \"s|.yaml||g\" | sort | uniq  | tee folders.yaml"
         sh "/usr/local/bin/jenkins-jobs --conf jenkins_conf.ini update create_folders.yaml"
     }
 
@@ -38,6 +38,8 @@ node() {
         echo "release: ${release}"
         echo "sg: ${sg}"
         echo "testline: ${testline}"
+
+        def currentJobDirectory = env.JOB_NAME.split('/')[0..-2].join('/')
 
         sh " find . | grep \"${zone}\" | grep \"${release}\" | grep \"${sg}\" | grep \"${testline}\" | grep -v \"testcases\" | sed \"s|^.|- ${currentJobDirectory}/${env.branch}|g\" | sed \"s|.yaml||g\" | sort | uniq  "
     }
