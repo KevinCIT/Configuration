@@ -16,5 +16,11 @@ node() {
     stage("Create jobs and folders") {
         sh "ls && pwd"
         sh "find ."
+
+        echo "branch: ${env.branch}"
+        echo "zone: ${env.zone}"
+        echo "release: ${env.release}"
+        echo "sg: ${env.sg}"
+        echo "testline: ${env.testline}"
     }
 }
