@@ -13,6 +13,11 @@ node() {
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/KevinCIT/Configuration.git']]])
     }
 
+    stage("Create all folders") {
+        sh "find . | grep streams | sed 's|/streams||g' | sed 's|^./|- |g'|sed 's|.y
+aml||g' | sort | uniq  | tee folders.yaml"
+    }
+
     stage("Create jobs and folders") {
         sh "ls && pwd"
 
@@ -28,6 +33,12 @@ node() {
         echo "sg: ${sg}"
         echo "testline: ${testline}"
 
-        sh " find . | grep \"${zone}\" | grep \"${release}\" | grep \"${sg}\" | grep \"${testline}\""
+        sh " find . | \
+            grep \"${zone}\" | \
+            grep \"${release}\" | \
+            grep \"${sg}\" | \
+            grep \"${testline}\" |
+            sed \"s|./|${env.baseDir}\"
+        "
     }
 }
