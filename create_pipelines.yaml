@@ -12,12 +12,12 @@
         path_prefix:
             !include: stream.yaml  
         base_name: 
-            - MiddlenightTrigger
+            - MiddleN\ightTrigger
             - PeriodicTrigger
             - FindUntestedPackage
             - Bridge
             - CIT
-            - ReleaseNote
+            - Report
         
     - cit-pipeline:
         path_prefix:
