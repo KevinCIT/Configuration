@@ -1,6 +1,7 @@
 node() {
     properties([
         parameters([
+            string(defaultValue: "Develop", description: '', name: 'branch'),
             string(defaultValue: "HGZ", description: '', name: 'zone'),
             string(defaultValue: "", description: '', name: 'release'),
             string(defaultValue: "", description: '', name: 'sg'),
