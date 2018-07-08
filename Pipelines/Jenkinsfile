@@ -28,6 +28,6 @@ node() {
         echo "sg: ${sg}"
         echo "testline: ${testline}"
 
-        sh " find . | grep ${branch} | grep ${zone} | grep ${release} | grep ${sg} | grep ${testline}"
+        sh " find . | grep \"${branch}\" | grep \"${zone}\" | grep \"${release}\" | grep \"${sg}\" | grep \"${testline}\""
     }
 }
