@@ -16,7 +16,7 @@ node() {
     }
 
     stage("Create all folders") {
-        sh "find . | grep streams | sed \"s|/streams||g\" | sed \"s|^.|- ${env.branch}|g\" |sed \"s|.yaml||g\" | sort | uniq  | tee folders.yaml"
+        sh "find . | grep /streams/ | sed \"s|/streams||g\" | sed \"s|^.|- ${env.branch}|g\" |sed \"s|.yaml||g\" | sort | uniq  | tee folders.yaml"
         sh "cat folders.yaml"
     }
 
