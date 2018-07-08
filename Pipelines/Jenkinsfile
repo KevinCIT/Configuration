@@ -41,6 +41,6 @@ node() {
 
         def currentJobDirectory = env.JOB_NAME.split('/')[0..-2].join('/')
 
-        sh " find . -mindepth 4  | grep \"${zone}\" | grep \"${release}\" | grep \"${sg}\" | grep \"${testline}\" | grep -v \"testcases\" | sed \"s|^.|- ${currentJobDirectory}/${env.branch}|g\" | sed \"s|.yaml||g\" | sort | uniq  "
+        sh " find . -mindepth 3  | grep \"${zone}\" | grep \"${release}\" | grep \"${sg}\" | grep \"${testline}\" | grep -v \"testcases\" | sed \"s|^.|- ${currentJobDirectory}/${env.branch}|g\" | sed \"s|.yaml||g\" | sort | uniq  "
     }
 }
