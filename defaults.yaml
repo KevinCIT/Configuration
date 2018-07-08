@@ -1,0 +1,4 @@
+- defaults:
+    name: global
+    branch: master
+    git_url: "git@dogs.net:woof/test.git"

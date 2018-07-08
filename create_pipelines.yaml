@@ -1,0 +1,38 @@
+
+- job-template:
+    id: cit-pipeline
+    name: '{path_prefix}/{base_name}-{branch}'
+    sandbox: true
+
+- job-group:
+    id: cit-pipeline-group
+    name: 'cit-pipeline-group'
+    jobs:
+    - cit-pipeline:
+        path_prefix:
+            !include: stream.yaml  
+        base_name: 
+            - MiddlenightTrigger
+            - PeriodicTrigger
+            - FindUntestedPackage
+            - Bridge
+            - CIT
+            - ReleaseNote
+        
+    - cit-pipeline:
+        path_prefix:
+            !include: sg.yaml  
+        base_name: 
+            - Bridge
+            - CIT
+        
+    - cit-pipeline:
+        path_prefix:
+            !include: testline.yaml  
+        base_name: 
+            - Bridge
+            - CIT
+- project:
+    name: cit-pipelines
+    jobs:
+        - cit-pipeline-group
