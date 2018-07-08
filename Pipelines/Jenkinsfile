@@ -36,7 +36,7 @@ node() {
             grep \"${zone}\" | \
             grep \"${release}\" | \
             grep \"${sg}\" | \
-            grep \"${testline}\" |
+            grep \"${testline}\" | \
             sed \"s|./|${env.baseDir}\"
         "
     }
