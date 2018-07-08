@@ -1,0 +1,11 @@
+- job-template:
+    id: 'cit-folder'
+    name: '{job-name}'
+    project-type: folder
+
+- project:
+    name: test
+    job-name: 
+        !include: folders.yaml
+    jobs:
+        - cit-folder
