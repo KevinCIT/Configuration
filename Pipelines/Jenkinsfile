@@ -39,6 +39,6 @@ node() {
         echo "sg: ${sg}"
         echo "testline: ${testline}"
 
-        sh " find . | grep \"${zone}\" | grep \"${release}\" | grep \"${sg}\" | grep \"${testline}\" | grep -v \"testcases\""
+        sh " find . | grep \"${zone}\" | grep \"${release}\" | grep \"${sg}\" | grep \"${testline}\" | grep -v \"testcases\" | sed \"s|.yaml||g\" | sort | uniq  "
     }
 }
