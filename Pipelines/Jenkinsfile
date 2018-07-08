@@ -1,10 +1,10 @@
 node() {
     properties([
         parameters([
-            string(defaultValue: "HGZ", name: 'zone'),
-            string(defaultValue: "", name: 'release'),
-            string(defaultValue: "", name: 'sg'),
-            string(defaultValue: "", name: 'testline')
+            string(defaultValue: "HGZ", description: '', name: 'zone'),
+            string(defaultValue: "", description: '', name: 'release'),
+            string(defaultValue: "", description: '', name: 'sg'),
+            string(defaultValue: "", description: '', name: 'testline')
         ])
     ])
 
